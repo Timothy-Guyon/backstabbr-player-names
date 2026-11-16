@@ -10,8 +10,7 @@ Android Firefox + Violentmonkey). Mobile Chrome is out of scope (no add-on suppo
 ## Current state
 - `backstabbr-player-names.user.js` is the source of truth. `@grant none`, plain JS, no build step.
   Tested by injection on a live game page: all 7 countries labelled, settings panel works.
-- `chrome-extension-legacy/` is the earlier MV3 extension. Superseded; Timmy has it installed and
-  should remove it (it double-labels alongside the userscript). Delete the folder once he confirms.
+- The earlier MV3 extension (chrome-extension-legacy/) was removed on 2026-11-16 after Timmy uninstalled it.
 
 ## How it works
 - Runs on `https://(www.)backstabbr.com/game/*`. Game id = `/game/<slug>/<id>`.
