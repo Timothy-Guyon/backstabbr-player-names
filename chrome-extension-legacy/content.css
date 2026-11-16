@@ -1,0 +1,10 @@
+.bsx-country[data-bsx-label]::after {
+  content: "(" attr(data-bsx-label) ")";
+  margin-left: 0.3em;
+  font-size: 0.85em;
+  font-weight: normal;
+  font-style: normal;
+  opacity: 0.75;
+  white-space: nowrap;
+}
+html.bsx-off .bsx-country::after { content: none !important; }

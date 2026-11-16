@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  body { font: 13px system-ui, sans-serif; margin: 0; padding: 12px; width: 300px; color: #222; }
+  h1 { font-size: 14px; margin: 0 0 8px; }
+  .toggle { display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
+  table { width: 100%; border-collapse: collapse; }
+  td { padding: 3px 4px; vertical-align: middle; }
+  td.country { font-weight: 600; white-space: nowrap; }
+  td.user { color: #666; font-size: 11px; }
+  input[type=text] { width: 100%; box-sizing: border-box; padding: 3px 5px; font: inherit; }
+  .hint { color: #777; font-size: 11px; margin-top: 8px; }
+  .empty { color: #777; }
+</style>
+</head>
+<body>
+  <h1>Backstabbr Player Names</h1>
+  <label class="toggle"><input type="checkbox" id="enabled"> Show player names</label>
+  <div id="content" class="empty">Open a Backstabbr game tab to edit names.</div>
+  <div class="hint">Leave a box blank to use the Backstabbr username. Nicknames follow a player across all your games.</div>
+  <script src="popup.js"></script>
+</body>
+</html>

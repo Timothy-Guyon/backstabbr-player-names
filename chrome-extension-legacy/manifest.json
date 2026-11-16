@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Backstabbr Player Names",
+  "version": "1.0.0",
+  "description": "Shows who is playing each country next to every country name on Backstabbr, with optional custom nicknames.",
+  "permissions": ["storage"],
+  "content_scripts": [
+    {
+      "matches": ["https://www.backstabbr.com/game/*", "https://backstabbr.com/game/*"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Backstabbr Player Names"
+  }
+}
