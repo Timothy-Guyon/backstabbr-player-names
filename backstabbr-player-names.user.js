@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Backstabbr Player Names
 // @namespace    backstabbr-player-names
-// @version      1.0.1
+// @version      1.0.2
 // @description  Shows who is playing each country next to every country name on Backstabbr, with optional custom nicknames.
 // @match        https://www.backstabbr.com/game/*
 // @match        https://backstabbr.com/game/*
@@ -47,13 +47,14 @@
     html.bsx-off .bsx-country::after { content: none !important; }
 
     .bsx-fab {
-      position: fixed; right: 16px; bottom: 16px; z-index: 2147483000;
-      border: 0; border-radius: 999px; padding: 10px 14px;
+      /* Small tab on the right edge, mid-screen, so it never covers the page's tabs or Safari's bottom bar. */
+      position: fixed; right: 0; top: 40%; z-index: 2147483000;
+      border: 0; border-radius: 8px 0 0 8px; padding: 10px 6px 10px 8px; opacity: .8;
       background: #1f2937; color: #fff; font: 600 13px/1 system-ui, sans-serif;
       box-shadow: 0 2px 8px rgba(0,0,0,.3); cursor: pointer;
     }
     .bsx-panel {
-      position: fixed; right: 16px; bottom: 64px; z-index: 2147483001;
+      position: fixed; right: 40px; top: 20%; z-index: 2147483001;
       width: min(320px, calc(100vw - 32px)); max-height: 70vh; overflow: auto;
       background: #fff; color: #222; border-radius: 10px; padding: 12px;
       box-shadow: 0 6px 24px rgba(0,0,0,.3); font: 13px/1.4 system-ui, sans-serif;
@@ -177,7 +178,9 @@
   const fab = document.createElement('button');
   fab.className = 'bsx-fab';
   fab.type = 'button';
-  fab.textContent = 'Names';
+  fab.textContent = '👥';
+  fab.title = 'Player names';
+  fab.setAttribute('aria-label', 'Player names');
   fab.hidden = true;
 
   const panel = document.createElement('div');
