@@ -1,10 +1,12 @@
 // ==UserScript==
 // @name         Backstabbr Player Names
 // @namespace    backstabbr-player-names
-// @version      1.0.2
+// @version      1.1.0
 // @description  Shows who is playing each country next to every country name on Backstabbr, with optional custom nicknames.
 // @match        https://www.backstabbr.com/game/*
 // @match        https://backstabbr.com/game/*
+// @match        https://www.backstabbr.com/sandbox/*
+// @match        https://backstabbr.com/sandbox/*
 // @grant        none
 // @run-at       document-idle
 // @homepageURL  https://github.com/Timothy-Guyon/backstabbr-player-names
@@ -14,6 +16,32 @@
 
 (() => {
   'use strict';
+
+  // ---------- sandbox warning ----------
+  // Sandboxes look almost like the real game, so make it impossible to miss:
+  // a red border around the whole screen plus a sticky banner at the top.
+  if (/(^|\/)sandbox(\/|$)/i.test(location.pathname)) {
+    const s = document.createElement('style');
+    s.textContent = `
+      html::after {
+        content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 2147483646;
+        border: 6px solid #dc2626;
+      }
+      .bsx-sandbox-banner {
+        position: sticky; top: 0; z-index: 2147483647;
+        background: repeating-linear-gradient(45deg, #dc2626 0 14px, #b91c1c 14px 28px);
+        color: #fff; text-align: center; padding: 10px 12px;
+        font: 700 16px/1.3 system-ui, sans-serif; letter-spacing: .02em;
+        text-shadow: 0 1px 2px rgba(0,0,0,.4);
+      }
+      .bsx-sandbox-banner small { display: block; font-weight: 500; font-size: 13px; opacity: .95; }`;
+    document.head.append(s);
+    const b = document.createElement('div');
+    b.className = 'bsx-sandbox-banner';
+    b.innerHTML = 'SANDBOX: practice only<small>Orders here are NOT your real moves</small>';
+    document.body.prepend(b);
+    return;
+  }
 
   const match = location.pathname.match(/^\/game\/[^/]+\/(\d+)/);
   if (!match) return;
